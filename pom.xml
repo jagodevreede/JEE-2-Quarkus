@@ -13,7 +13,9 @@
 
     <modules>
         <module>jee-sample-dao</module>
+        <module>jee-sample-rest</module>
         <module>jee-sample-web</module>
+        <module>jee-sample-quarkus</module>
     </modules>
 
     <dependencies>
@@ -21,12 +23,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

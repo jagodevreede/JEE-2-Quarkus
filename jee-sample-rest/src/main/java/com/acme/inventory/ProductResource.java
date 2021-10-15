@@ -3,8 +3,7 @@ package com.acme.inventory;
 import com.acme.inventory.repository.ProductRepository;
 import com.acme.inventory.repository.ProductService;
 
-import javax.annotation.Resource;
-import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.math.BigDecimal;
@@ -17,14 +16,14 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductResource {
 
-    @Resource(lookup="resource/jee-sample/priceMultiplier")
-    private double priceMultiplier;
+    @Inject
+    ApplicationConfiguration config;
 
-    @EJB
-    private ProductRepository productRepository;
+    @Inject
+    ProductRepository productRepository;
 
-    @EJB
-    private ProductService productService;
+    @Inject
+    ProductService productService;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -39,7 +38,7 @@ public class ProductResource {
                 .map(p -> ProductDTO.builder()
                         .id(p.getId())
                         .name(p.getName())
-                        .listPrice(p.getListPrice().multiply(new BigDecimal(priceMultiplier)).setScale(2, RoundingMode.HALF_UP))
+                        .listPrice(p.getListPrice().multiply(BigDecimal.valueOf(config.getPriceMultiplier())).setScale(2, RoundingMode.HALF_UP))
                         .modelYear(p.getModelYear())
                         .brand(p.getBrand().getName())
                         .category(p.getCategory().getName())

@@ -14,13 +14,19 @@
     <dependencies>
         <dependency>
             <groupId>com.acme</groupId>
-            <artifactId>jee-sample-dao</artifactId>
-            <version>${parent.version}</version>
+            <artifactId>jee-sample-rest</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>

@@ -3,7 +3,7 @@ package com.acme.inventory;
 import com.acme.inventory.repository.Category;
 import com.acme.inventory.repository.CategoryRepository;
 
-import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -13,8 +13,8 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class CategoryResource {
 
-    @EJB
-    private CategoryRepository categoryRepository;
+    @Inject
+    CategoryRepository categoryRepository;
 
     @Consumes(MediaType.TEXT_PLAIN)
     @POST

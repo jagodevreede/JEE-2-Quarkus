@@ -2,16 +2,16 @@ package com.acme.inventory.repository;
 
 import lombok.var;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Stateless
+@ApplicationScoped
 public class ProductRepository {
 
-    @PersistenceContext(unitName = "myDB")
-    private EntityManager entityManager;
+    @Inject
+    EntityManager entityManager;
 
     public List<Product> byName(String name) {
         var criteriaBuilder = entityManager.getCriteriaBuilder();

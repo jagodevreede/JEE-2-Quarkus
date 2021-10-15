@@ -1,10 +1,10 @@
 package com.acme.inventory.repository;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import java.io.InputStream;
 import java.util.Scanner;
 
-@Stateless
+@ApplicationScoped
 public class ProductService {
     public String getFileContents() {
         InputStream stream = this.getClass().getClassLoader().getResourceAsStream("example.txt");

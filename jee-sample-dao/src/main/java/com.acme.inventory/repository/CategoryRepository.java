@@ -1,16 +1,19 @@
 package com.acme.inventory.repository;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Random;
 
-@Stateless
+@ApplicationScoped
 public class CategoryRepository {
-    @PersistenceContext(unitName = "myDB")
-    private EntityManager entityManager;
 
+    @Inject
+    EntityManager entityManager;
+
+    @Transactional
     public Category newCategory(String name) {
         Category category = Category.builder()
                 .id(new Random().nextInt())
